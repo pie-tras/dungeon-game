@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0p0p2bg2spx4"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_n17bi"]
+[ext_resource type="Texture2D" uid="uid://c2dyohy4fl03l" path="res://icon.svg" id="2_nrboq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ksk1y"]
+
+[sub_resource type="Gradient" id="Gradient_riee8"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.658065)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ccqxx"]
+gradient = SubResource("Gradient_riee8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_n17bi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_nrboq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_ksk1y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(3, 3)
+color = Color(0.870588, 0.384314, 0.0784314, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ccqxx")
